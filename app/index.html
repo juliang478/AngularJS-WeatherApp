@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="MainCtrl.js"></script>
+    <title>Weather App</title>
+  </head>
+  <body ng-app="weatherApp">
+    <div ng-controller="MainCtrl">
+      <form name="currentWeather" ng-submit="getCurrentWeather(cityName)">
+        <input type="search" placeholder="Enter City" ng-model="cityName" />
+        <input type="submit" value="Get Current Weather" />
+      </form>
+      {{error}}
+      <div>
+        <h3>Today's Weather</h3>
+        <h5>Today's date: {{convertMSToDate(weatherData.dt)}}</h5>
+        <span>Current Temp: {{weatherData.main.temp}} F</span>
+        <span>Feels Like: {{weatherData.main.feels_like}} F</span>
+        <span>High: {{weatherData.main.temp_max}} F</span>
+        <span>Low: {{weatherData.main.temp_min}} F</span>
+      </div>
+      <h5>Daily Forecast</h5>
+      <div ng-repeat="forecast in dailyForecast">
+        <div style="margin-top: 10px;">
+          Day: {{convertMSToDate(forecast.dt)}}
+          <br />
+          Morning temp: {{forecast.temp.day}}
+          <div>Sunrise: {{convertMSToTime(forecast.sunrise)}}</div>
+          <div>Sunset: {{convertMSToTime(forecast.sunset)}}</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
