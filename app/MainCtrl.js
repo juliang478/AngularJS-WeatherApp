@@ -1,28 +1,31 @@
 var app = angular.module("weatherApp");
-var apiKey = "{API_KEY}";
+var apiKey = "";
+var baseUrl = "http://api.weatherapi.com/v1";
+var degreesSymbol = '\u00B0';
 
 app.controller('MainCtrl', function MainCtrl($scope, $http, $log){
   $scope.message = "Hello World";
   $scope.cityName = "Riverside";
 
   var OnSuccess = (response) => {
-    $log.info(response.data);
-    $scope.weatherData = response.data;
+    $log.info(response.data.current);
+    $scope.weatherData = response.data.current;
+    $scope.locationData = response.data.location;
 
-    getDailyForecast($scope.weatherData.coord.lat, $scope.weatherData.coord.lon);
+    getDailyForecast($scope.locationData.name);
   }
 
   var OnDailySuccess = (response) => {
-    $log.info(response.data.daily);
-    $scope.dailyForecast = response.data.daily;
+    $log.info(response.data.forecast);
+    $scope.dailyForecast = response.data.forecast;
   }
 
   var OnError = (response) => {
     $scope.error = response.data.message;
   }
 
-  $scope.convertMSToDate = (dateInMs) => {
-    var date = new Date(dateInMs);
+  $scope.formatDate = (dateIn) => {
+    var date = new Date(dateIn);
 
     return date.toLocaleDateString();
   }
@@ -33,13 +36,21 @@ app.controller('MainCtrl', function MainCtrl($scope, $http, $log){
     return time.toLocaleTimeString();
   }
 
+  $scope.formatLocationName = (cityName, stateName) => {
+    return `${cityName}, ${stateName}`;
+  }
+
+  $scope.formatTemp = (temperature) => {
+    return `${temperature} ${degreesSymbol}F`
+  }
+
   $scope.getCurrentWeather = (cityName) => {
-    $http.get(`http://api.weatherstack.com/current?access_key=${apiKey}&query=${cityName}&units=f`)
+    $http.get(`${baseUrl}/current.json?key=${apiKey}&q=${cityName}`)
          .then(OnSuccess, OnError);
   }
 
-  var getDailyForecast = (lat, long) => {
-    $http.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=hourly,minutely&appid=${apiKey}&units=imperial`)
+  var getDailyForecast = (cityName) => {
+    $http.get(`${baseUrl}/forecast.json?key=${apiKey}&q=${cityName}&days=7`)
          .then(OnDailySuccess, OnError);
   }
 
