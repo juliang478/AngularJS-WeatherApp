@@ -1,6 +1,25 @@
-
 {{error}}
-<form name="currentWeather" ng-submit="getCurrentWeather(cityName)">
-  <input type="search" placeholder="Enter City" ng-model="cityName" />
-  <input type="submit" value="Get Current Weather" />
-</form>
+<div class="row mt-5">
+  <div class="col-md-12 text-center">
+    <h3>Get Your Local Weather</h3>
+    <p>Enter your City or Zipcode to get your weather information!</p>
+  </div>
+</div>
+<div class="row input-group justify-content-center mt-5">
+  <div class="col-md-3 col-sm-12">
+    <form
+      name="currentWeather"
+      ng-submit="getCurrentWeather(cityName)"
+      class="text-center"
+    >
+      <input
+        class="form-control"
+        type="search"
+        placeholder="Enter City"
+        ng-model="cityName"
+      />
+      <br>
+      <input class="btn btn-primary" type="submit" value="Get Weather" />
+    </form>
+  </div>
+</div>
