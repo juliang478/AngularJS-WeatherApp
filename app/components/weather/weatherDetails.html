@@ -1,28 +1,61 @@
-<div>
-  <h3 ng-show="locationData.name">
-    Today's Weather in {{locationData.name}}, {{locationData.region}}
-  </h3>
-  <h5>Today's date: {{formatDate(locationData.localtime)}}</h5>
-  <span>Current Temp: {{formatTemp(weatherData.temp_f)}}</span>
-  <img
-    ng-src="{{weatherData.condition.icon}}"
-    alt="{{weatherData.condition.text}}"
-  />
-  <span>Feels Like: {{formatTemp(weatherData.feelslike_f)}} </span>
-</div>
-
-<h5>Daily Forecast</h5>
-<div ng-repeat="forecast in dailyForecast">
-  <div
-    style="margin-top: 10px"
-    ng-repeat="forecast in dailyForecast.forecastday"
-  >
-    Day: {{formatDate(forecast.date)}}
-    <br />
-    <div>High: {{formatTemp(forecast.day.maxtemp_f)}}</div>
-    <div>Low: {{formatTemp(forecast.day.mintemp_f)}}</div>
+<div class="details-container">
+  <div class="row">
+    {{error}}
+    <div class="col-md-12">
+      <h3 class="mx-auto mt-5">
+        Today's Weather in {{locationData.name}}, {{locationData.region}}
+      </h3>
+    </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h5>Today's date: {{formatDate(locationData.localtime)}}</h5>
+      <div>
+        <div>
+          Current Temp:
+          <br />
+          <span class="temp">{{formatTemp(weatherData.temp_f)}}</span>
+        </div>
+        <img
+          ng-src="{{weatherData.condition.icon}}"
+          alt="{{weatherData.condition.text}}"
+          width="100px"
+          height="100px"
+        />
+        <div>
+          Feels Like:
+          <br />
+          <span class="temp">{{formatTemp(weatherData.feelslike_f)}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h5>Daily Forecast</h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div
+      class="col-md-4"
+      style="margin-top: 10px"
+      ng-repeat="forecast in forecast.forecastday"
+    >
+      {{formatDate(forecast.date)}}
+      <br />
+      <img
+        ng-src="{{forecast.day.condition.icon}}"
+        alt="{{forecast.day.condition.text}}"
+        width="75px"
+        height="75px"
+      />
+      <div>High: {{formatTemp(forecast.day.maxtemp_f)}}</div>
+      <div>Low: {{formatTemp(forecast.day.mintemp_f)}}</div>
+    </div>
+  </div>
+
+  <a href="#/main">Back to search</a>
 </div>
-
-
-<a href="#/main">Back to search</a>
