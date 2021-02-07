@@ -11,23 +11,33 @@
   <div class="row">
     <div class="col-md-12">
       <h5>Today's date: {{formatDate(locationData.localtime)}}</h5>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-2">
       <div>
         <div>
           Current Temp:
           <br />
           <span class="temp">{{formatTemp(weatherData.temp_f)}}</span>
         </div>
-        <img
-          ng-src="{{weatherData.condition.icon}}"
-          alt="{{weatherData.condition.text}}"
-          width="100px"
-          height="100px"
-        />
-        <div>
-          Feels Like:
-          <br />
-          <span class="temp">{{formatTemp(weatherData.feelslike_f)}}</span>
-        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <i
+        class="wi wi-day-sunny icon"
+        alt="{{weatherData.condition.text}}"
+        width="100px"
+        height="100px"
+      ></i>
+    </div>
+    <div class="col-md-2">
+      <div>
+        Feels Like:
+        <br />
+        <span class="temp-feels-like"
+          >{{formatTemp(weatherData.feelslike_f)}}</span
+        >
       </div>
     </div>
   </div>
