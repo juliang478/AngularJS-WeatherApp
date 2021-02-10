@@ -7,41 +7,41 @@
       </h3>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <h5>Today's date: {{formatDate(locationData.localtime)}}</h5>
+  <div class="current-details-container">
+    <div class="row mt-5 mb-5">
+      <div class="col-md-12">
+        <h4>{{formatDate(locationData.localtime)}}</h4>
+      </div>
     </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-md-2">
-      <div>
+    <div class="row justify-content-center">
+      <div class="col-md-2">
         <div>
-          Current Temp:
+          <div>
+            Currently:
+            <br />
+            <span class="temp">{{formatTemp(weatherData.temp_f)}}<i class="wi wi-fahrenheit"></i> </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <i
+          class="wi wi-day-sunny icon"
+          alt="{{weatherData.condition.text}}"
+          width="100px"
+          height="100px"
+        ></i>
+      </div>
+      <div class="col-md-2">
+        <div>
+          Feels Like:
           <br />
-          <span class="temp">{{formatTemp(weatherData.temp_f)}}</span>
+          <span class="temp-feels-like"
+            >{{formatTemp(weatherData.feelslike_f)}}</span
+          >
         </div>
       </div>
     </div>
-    <div class="col-md-2">
-      <i
-        class="wi wi-day-sunny icon"
-        alt="{{weatherData.condition.text}}"
-        width="100px"
-        height="100px"
-      ></i>
-    </div>
-    <div class="col-md-2">
-      <div>
-        Feels Like:
-        <br />
-        <span class="temp-feels-like"
-          >{{formatTemp(weatherData.feelslike_f)}}</span
-        >
-      </div>
-    </div>
   </div>
-
   <div class="row">
     <div class="col-md-12">
       <h5>Daily Forecast</h5>

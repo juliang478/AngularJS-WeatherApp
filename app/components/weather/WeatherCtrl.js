@@ -25,7 +25,7 @@
     };
 
     $scope.formatTemp = (temperature) => {
-      return `${temperature} ${degreesSymbol}F`;
+      return `${temperature}`;
     };
 
     $scope.formatDate = (dateIn) => {
