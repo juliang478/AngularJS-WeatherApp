@@ -1,7 +1,16 @@
+/******** Global Styles ********/
+body {
+  background-color: #00bfff;
+}
+
 /******** Weather Details Styling ********/
 .details-container {
   margin-top: 1em;
   text-align: center;
+}
+
+.current-details-container {
+  margin: 4em 0;
 }
 
 .temp {
