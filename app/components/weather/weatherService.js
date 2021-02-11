@@ -1,4 +1,4 @@
-var apiKey = "1187cf3bf8b44cc9abe183842210402";
+var apiKey = "";
 var baseUrl = "http://api.weatherapi.com/v1";
 
 angular.module("weatherApp").factory("weather", function ($http) {
