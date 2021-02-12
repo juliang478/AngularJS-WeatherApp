@@ -1,12 +1,13 @@
-var app = angular.module("weatherApp");
-var degreesSymbol = '\u00B0';
+(function () {
+  angular
+    .module("weatherApp")
+    .controller("MainCtrl", ["$scope", "$location", MainCtrl]);
 
-app.controller('MainCtrl', function MainCtrl($scope, $http, $log, $location){
-  
-  $scope.cityName = "Riverside";
+  function MainCtrl($scope, $location) {
+    $scope.cityName = "Riverside";
 
-  $scope.getCurrentWeather = (cityName) => {
-    $location.path("/weather/current/" + cityName);
-      
+    $scope.getCurrentWeather = (cityName) => {
+      $location.path("/weather/current/" + cityName);
+    };
   }
-});
+})();

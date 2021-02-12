@@ -1,9 +1,10 @@
 (function () {
-  var module = angular.module("weatherApp");
+  angular.module("weatherApp")
+    .controller("WeatherCtrl", ["$scope", "$routeParams", "weather", "$log", WeatherCtrl])
 
-  var WeatherCtrl = function ($scope, $routeParams, weather, $log) {
+  function WeatherCtrl ($scope, $routeParams, weather, $log) {
     var onCurrentWeatherSuccess = (data) => {
-      
+      $log.info(data);
       $scope.weatherData = data.current;
       $scope.locationData = data.location;
 
@@ -29,8 +30,9 @@
     };
 
     $scope.formatDate = (dateIn) => {
+      $log.info(dateIn);
       var date = new Date(dateIn);
-
+      $log.info(date);
       return date.toDateString();
     };
 
@@ -39,5 +41,4 @@
     weather.getCurrentWeather(cityName).then(onCurrentWeatherSuccess);
   };
 
-  module.controller("WeatherCtrl", WeatherCtrl);
 })();
