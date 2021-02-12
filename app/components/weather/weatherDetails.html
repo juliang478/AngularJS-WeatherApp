@@ -54,7 +54,7 @@
       style="margin-top: 10px"
       ng-repeat="forecast in forecast.forecastday"
     >
-      {{formatDate(forecast.date)}}
+      {{forecast.date | date:"fullDate"}}
       <br />
       <img
         ng-src="{{forecast.day.condition.icon}}"
@@ -67,5 +67,5 @@
     </div>
   </div>
 
-  <a href="#/main">Back to search</a>
+  <a href="/">Back to search</a>
 </div>

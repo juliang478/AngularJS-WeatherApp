@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-route.js"></script>
     <script src="/app/app.js"></script>
     <script src="/app/components/main/MainCtrl.js"></script>
     <script src="/app/components/weather/WeatherCtrl.js"></script>
+    <script src="/app/components/astro/AstroCtrl.js"></script>
     <script src="/app/components/weather/weatherService.js"></script>
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -15,7 +16,29 @@
     <title>Weather App</title>
   </head>
   <body ng-app="weatherApp" ng-cloak>
-    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">The Weather App</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/weather">Weather</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#/astro">Astronomy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
     <div class="container-fluid" ng-view></div>
     
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>
